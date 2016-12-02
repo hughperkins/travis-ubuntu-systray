@@ -54,11 +54,16 @@ class Systray(object):
         return True
 
     def update(self):
-        label = 'ok'
+        label = ''
         try:
             # message = ''
-            repo = t.repo('hughperkins/tensorflow-cl')
-            label = repo.last_build_state
+            for slug in config['repos_to_watch']:
+                repo = t.repo(slug)
+                build_state = repo.last_build_state
+                if build_state not in ['passed', 'failed']:
+                    if label != '':
+                        label += ' '
+                    label += slug.split('/')[1] + ':' + build_state
             # print(repo.last_build_state)
             pass
         except Exception as e:
