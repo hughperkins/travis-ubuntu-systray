@@ -1,6 +1,8 @@
 # travis-ubuntu-systray
 systray icon for travis for ubuntu
 
+Note: this isnt currently quite really working for now.
+
 - first copy travis.yaml.templ to travis.yaml
 - customize to contain a github apikey, with permissions:
   - repo:status
